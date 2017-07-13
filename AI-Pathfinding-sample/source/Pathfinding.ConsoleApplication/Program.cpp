@@ -1,5 +1,9 @@
 #include "pch.h"
 
+#include "Main.h"
+
+using namespace AI;
+
 int main(int argc, char* argv[])
 {
 #if defined(DEBUG) | defined(_DEBUG)
@@ -8,6 +12,9 @@ int main(int argc, char* argv[])
 
 	UNREFERENCED_PARAMETER(argc);
 	UNREFERENCED_PARAMETER(argv);
+
+	Main game("Grid.grid");
+	game.Run();
 
 	return 0;
 }

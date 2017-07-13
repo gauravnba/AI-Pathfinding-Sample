@@ -1,4 +1,7 @@
 #include "pch.h"
+
+#include <iostream>
+#include "Node.h"
 #include "GridHelper.h"
 #include "Utility.h"
 
@@ -6,6 +9,14 @@ using namespace std;
 
 namespace Library
 {
+	const map<NodeType, string> GridHelper::mNodeRepresentation = {
+		{ NodeType::Normal, "-" },
+		{ NodeType::Wall, "|" },
+		{ NodeType::Start, "S" },
+		{ NodeType::End, "E" },
+		{ NodeType::Path, "X" }
+	};
+
 	Graph GridHelper::LoadGridFromFile(const string& filename)
 	{
 		int32_t gridWidth, gridHeight;
@@ -72,7 +83,7 @@ namespace Library
 
 				for (const Point& offset : NeighborOffsets)
 				{
-					Point location(node->Location().X() + offset.X(), node->Location().Y() + offset.Y());
+					Point location(node->Location().X + offset.X, node->Location().Y + offset.Y);
 					if (IsValidGridLocation(location, gridWidth, gridHeight))
 					{
 						shared_ptr<Node> neighbor = graph.At(location);
@@ -85,11 +96,28 @@ namespace Library
 			}
 		}
 
+		graph.SetEndPoint(Point(gridHeight, gridWidth));
+
 		return graph;
+	}
+
+	void GridHelper::PrintGridFromGraph(const Graph& graph)
+	{
+		Point currentPoint;
+
+		for(; currentPoint.Y < graph.EndPoint().Y; ++currentPoint.Y)
+		{
+			for (; currentPoint.X < graph.EndPoint().X; ++currentPoint.X)
+			{
+				cout << mNodeRepresentation.at(graph.At(currentPoint)->Type()) << " ";
+			}
+			cout << "\n";
+			currentPoint.X = 0;
+		}
 	}
 
 	bool GridHelper::IsValidGridLocation(const Point& location, int maxWidth, int maxLength)
 	{
-		return (location.X() >= 0 && location.X() < maxWidth) && (location.Y() >= 0 && location.Y() < maxLength);
+		return (location.X >= 0 && location.X < maxWidth) && (location.Y >= 0 && location.Y < maxLength);
 	}
 }

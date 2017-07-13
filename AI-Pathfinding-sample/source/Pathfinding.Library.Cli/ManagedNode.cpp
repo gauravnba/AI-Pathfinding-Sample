@@ -45,7 +45,7 @@ namespace Library
 		ManagedPoint^ ManagedNode::Location::get()
 		{
 			auto location = (*mNode)->Location();
-			return gcnew ManagedPoint(location.X(), location.Y());
+			return gcnew ManagedPoint(location.X, location.Y);
 		}
 
 		float ManagedNode::PathCost::get()

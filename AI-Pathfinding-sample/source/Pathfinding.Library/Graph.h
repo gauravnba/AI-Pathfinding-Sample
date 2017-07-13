@@ -17,9 +17,12 @@ namespace Library
 		std::shared_ptr<Node> At(const int x, const int y) const;
 		bool Contains(const Point& location) const;
 		bool Contains(const int x, const int y) const;
+		Point EndPoint() const;
+		void SetEndPoint(const Point& point);
 
 	private:
 		std::map<Point, std::shared_ptr<Node>> mNodes;
+		Point mEndPoint;
 	};
 }
 

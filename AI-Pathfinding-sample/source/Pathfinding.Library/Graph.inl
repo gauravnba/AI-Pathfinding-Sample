@@ -26,4 +26,14 @@ namespace Library
 	{
 		return Contains(Point(x, y));
 	}
+
+	inline void Graph::SetEndPoint(const Point & point)
+	{
+		mEndPoint = point;
+	}
+
+	inline Point Graph::EndPoint() const
+	{
+		return mEndPoint;
+	}
 }

@@ -49,12 +49,12 @@ namespace Library
 
 		int ManagedPoint::X::get()
 		{
-			return mPoint->X();
+			return mPoint->X;
 		}
 
 		int ManagedPoint::Y::get()
 		{
-			return mPoint->Y();
+			return mPoint->Y;
 		}
 	}
 }

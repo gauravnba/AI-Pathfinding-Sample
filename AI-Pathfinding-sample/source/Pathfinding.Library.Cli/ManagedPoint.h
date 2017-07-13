@@ -4,7 +4,7 @@
 
 namespace Library
 {
-	class Point;
+	struct Point;
 
 	namespace Cli
 	{

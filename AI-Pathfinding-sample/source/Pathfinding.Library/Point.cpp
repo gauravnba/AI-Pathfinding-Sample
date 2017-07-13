@@ -4,7 +4,7 @@
 namespace Library
 {
 	Point::Point(const int32_t x, const int32_t y) :
-		mX(x), mY(y)
+		X(x), Y(y)
 	{
 	}
 }
