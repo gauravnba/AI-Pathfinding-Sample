@@ -10,7 +10,10 @@ namespace Library
 	enum class NodeType
 	{
 		Normal = 0,
-		Wall = 1
+		Wall = 1,
+		Start = 2,
+		End = 3,
+		Path = 4
 	};
 
 	class Node final
