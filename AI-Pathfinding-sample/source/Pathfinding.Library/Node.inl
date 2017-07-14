@@ -22,6 +22,11 @@ namespace Library
 		return mID;
 	}
 
+	inline void Node::SetType(NodeType type)
+	{
+		mType = type;
+	}
+
 	inline NodeType Node::Type() const
 	{
 		return mType;

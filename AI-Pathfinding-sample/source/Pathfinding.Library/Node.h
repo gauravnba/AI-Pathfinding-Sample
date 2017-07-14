@@ -31,8 +31,10 @@ namespace Library
 		bool operator!=(const Node& rhs) const;
 
 		const GUID& ID() const;
-		NodeType Type() const;
 		const Point& Location() const;
+
+		void SetType(NodeType type);
+		NodeType Type() const;
 		
 		float PathCost() const;
 		void SetPathCost(float value);
