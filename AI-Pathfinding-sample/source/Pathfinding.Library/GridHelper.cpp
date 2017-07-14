@@ -111,9 +111,10 @@ namespace Library
 			{
 				cout << mNodeRepresentation.at(graph.At(currentPoint)->Type()) << " ";
 			}
-			cout << "\n";
+			cout << endl;
 			currentPoint.X = 0;
 		}
+		cout << endl;
 	}
 
 	bool GridHelper::IsValidGridLocation(const Point& location, int maxWidth, int maxLength)

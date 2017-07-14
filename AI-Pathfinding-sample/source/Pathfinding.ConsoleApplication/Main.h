@@ -20,6 +20,10 @@ namespace AI
 		void Run();
 
 	private:
+		void SetStartAndEndPoints();
+
+		Library::Point GetPointFromString(const std::string& input);
+
 		Library::Graph mGraph;
 		std::string mGridFile;
 	};
