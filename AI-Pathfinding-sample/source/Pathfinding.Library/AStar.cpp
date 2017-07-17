@@ -70,6 +70,11 @@ namespace AI
 
 				openSet.erase(openSet.find(currentNode));
 				closedSet.insert(currentNode);
+
+				if (currentNode->Type() == NodeType::Normal)
+				{
+					currentNode->SetType(NodeType::Traversed);
+				}
 			} while (currentNode != end);
 
 			return BuildPath(start, end);

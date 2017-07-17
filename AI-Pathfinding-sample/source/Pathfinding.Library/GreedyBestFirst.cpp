@@ -33,12 +33,6 @@ namespace AI
 						{
 							node->SetHeuristic(Utility::ManhattanDistance(end->Location(), node->Location()));
 							openSet.insert(node);
-
-							// Set node to traversed.
-							if (node->Type() == NodeType::Normal)
-							{
-								node->SetType(NodeType::Traversed);
-							}
 						}
 					}
 				}
@@ -57,6 +51,12 @@ namespace AI
 
 				openSet.erase(openSet.find(currentNode));
 				closedSet.insert(currentNode);
+				
+				// Set node to traversed.
+				if (currentNode->Type() == NodeType::Normal)
+				{
+					currentNode->SetType(NodeType::Traversed);
+				}
 			} while (currentNode != end);
 
 			return BuildPath(start, end);
