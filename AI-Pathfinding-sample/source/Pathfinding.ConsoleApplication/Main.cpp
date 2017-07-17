@@ -27,19 +27,19 @@ namespace AI
 		SetStartAndEndPoints(start, end);
 
 		BreadthFirst breadthFirstSearch;
-		cout << "\nBreadth First Search\n" << endl;
+		cout << "\n***** Breadth First Search *****\n" << endl;
 		UpdateGraphWithPath(start, end, breadthFirstSearch);
 
 		GreedyBestFirst greedyBestFirst;
-		cout << "\nGreedy Best First Search\n" << endl;
+		cout << "\n***** Greedy Best First Search *****\n" << endl;
 		UpdateGraphWithPath(start, end, greedyBestFirst);
 
 		Dijkstra dijkstra;
-		cout << "\nDijkstra Shortest Path Search\n" << endl;
+		cout << "\n***** Dijkstra Shortest Path Search *****\n" << endl;
 		UpdateGraphWithPath(start, end, dijkstra);
 
 		AStar aStar;
-		cout << "\nA* Shortest Path Search\n" << endl;
+		cout << "\n***** A* Shortest Path Search *****\n" << endl;
 		UpdateGraphWithPath(start, end, aStar);
 	}
 
@@ -100,6 +100,12 @@ namespace AI
 		auto path = algorithm.FindPath(mGraph.At(start), mGraph.At(end), closedSet);
 		stopWatch.Stop();
 		auto elapsedTime = stopWatch.Elapsed();
+
+		if (path.empty())
+		{
+			cout << "No path can be found." << endl;
+			return;
+		}
 
 		for (auto node : path)
 		{
