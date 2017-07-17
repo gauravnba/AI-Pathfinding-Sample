@@ -14,7 +14,8 @@ namespace Library
 		{ NodeType::Wall, "|" },
 		{ NodeType::Start, "S" },
 		{ NodeType::End, "E" },
-		{ NodeType::Path, "X" }
+		{ NodeType::Path, "X" },
+		{ NodeType::Traversed, "*" }
 	};
 
 	Graph GridHelper::LoadGridFromFile(const string& filename)
@@ -101,7 +102,7 @@ namespace Library
 		return graph;
 	}
 
-	void GridHelper::PrintGridFromGraph(const Graph& graph)
+	void GridHelper::PrintGridFromGraph(Graph& graph)
 	{
 		Point currentPoint;
 
@@ -110,6 +111,12 @@ namespace Library
 			for (; currentPoint.X < graph.EndPoint().X; ++currentPoint.X)
 			{
 				cout << mNodeRepresentation.at(graph.At(currentPoint)->Type()) << " ";
+
+				// Reset the node to Normal, if it's a Traversed node or a Path.
+				if (graph.At(currentPoint)->Type() == NodeType::Path || graph.At(currentPoint)->Type() == NodeType::Traversed)
+				{
+					graph.At(currentPoint)->SetType(NodeType::Normal);
+				}
 			}
 			cout << endl;
 			currentPoint.X = 0;

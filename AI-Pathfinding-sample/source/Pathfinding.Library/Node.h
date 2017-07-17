@@ -13,7 +13,8 @@ namespace Library
 		Wall = 1,
 		Start = 2,
 		End = 3,
-		Path = 4
+		Path = 4,
+		Traversed = 5
 	};
 
 	class Node final
