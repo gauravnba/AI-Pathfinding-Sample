@@ -70,14 +70,14 @@ namespace Library
 		return mTotalCost;
 	}
 
-	inline std::vector<std::weak_ptr<Node>>& Node::Neighbors()
+	inline std::vector<std::weak_ptr<Node>>& Node::Neighbours()
 	{
-		return mNeighbors;
+		return mNeighbours;
 	}
 
-	inline const std::vector<std::weak_ptr<Node>>& Node::Neighbors() const
+	inline const std::vector<std::weak_ptr<Node>>& Node::Neighbours() const
 	{
-		return mNeighbors;
+		return mNeighbours;
 	}
 
 	inline std::weak_ptr<Node> Node::Parent() const

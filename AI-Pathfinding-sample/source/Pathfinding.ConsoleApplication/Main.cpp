@@ -2,8 +2,10 @@
 
 #include <string>
 #include "Main.h"
-#include "IPathFinder.h"
+
 #include "BreadthFirst.h"
+#include "GreedyBestFirst.h"
+#include "Dijkstra.h"
 
 using namespace std;
 using namespace Library;
@@ -27,6 +29,18 @@ namespace AI
 		BreadthFirst breadthFirstSearch;
 		cout << "\nBreadth First Search\n" << endl;
 		UpdateGraphWithPath(start, end, breadthFirstSearch);
+
+		GreedyBestFirst greedyBestFirst;
+		cout << "\nGreedy Best First Search\n" << endl;
+		UpdateGraphWithPath(start, end, greedyBestFirst);
+
+		Dijkstra dijkstra;
+		cout << "\nDijkstra Shortest Path Search\n" << endl;
+		UpdateGraphWithPath(start, end, dijkstra);
+
+		AStar aStar;
+		cout << "\nA* Shortest Path Search\n" << endl;
+		UpdateGraphWithPath(start, end, aStar);
 	}
 
 	inline void Main::SetStartAndEndPoints(Point& start, Point& end)
@@ -95,7 +109,5 @@ namespace AI
 		GridHelper::PrintGridFromGraph(mGraph);
 		cout << "\nTime taken: " << elapsedTime.count() << " microseconds" << endl;
 		cout << "Nodes traversed: " << closedSet.size() << endl;
-
-		closedSet.size();
 	}
 }

@@ -11,7 +11,6 @@ namespace AI
 		deque<shared_ptr<Node>> BreadthFirst::FindPath(shared_ptr<Node> start, shared_ptr<Node> end, set<shared_ptr<Node>>& closedSet)
 		{
 			deque<shared_ptr<Node>> frontier;
-			deque<shared_ptr<Node>> path;
 			bool foundEnd = false;
 
 			frontier.push_front(start);
@@ -22,9 +21,9 @@ namespace AI
 				shared_ptr<Node> currentParent = frontier.back();
 				frontier.pop_back();
 
-				for (auto weak_node : currentParent->Neighbors())
+				for (auto neighbour : currentParent->Neighbours())
 				{
-					auto node = weak_node.lock();
+					auto node = neighbour.lock();
 
 					if (node->Type() == NodeType::End)
 					{
@@ -44,15 +43,8 @@ namespace AI
 					}
 				}
 			} while (!frontier.empty() && !foundEnd);
-
-			// Build the path to return
-			auto currentNode = end->Parent().lock();
-			while (currentNode != start)
-			{
-				path.push_front(currentNode);
-				currentNode = currentNode->Parent().lock();
-			}
-			return path;
+			
+			return BuildPath(start, end);
 		}
 	}
 }

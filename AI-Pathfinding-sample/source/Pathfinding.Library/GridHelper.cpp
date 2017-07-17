@@ -27,7 +27,7 @@ namespace Library
 
 	Graph GridHelper::LoadGridFromFile(const string& filename, int32_t& gridWidth, int32_t& gridHeight)
 	{
-		const Point NeighborOffsets[] = { Point(-1, 0), Point(1, 0), Point(0, -1), Point(0, 1) };
+		const Point NeighbourOffsets[] = { Point(-1, 0), Point(1, 0), Point(0, -1), Point(0, 1) };
 
 		ifstream inputFile(filename);
 		if (inputFile.bad())
@@ -82,15 +82,15 @@ namespace Library
 			{
 				shared_ptr<Node> node = graph.At(x, y);
 
-				for (const Point& offset : NeighborOffsets)
+				for (const Point& offset : NeighbourOffsets)
 				{
 					Point location(node->Location().X + offset.X, node->Location().Y + offset.Y);
 					if (IsValidGridLocation(location, gridWidth, gridHeight))
 					{
-						shared_ptr<Node> neighbor = graph.At(location);
-						if (neighbor->Type() != NodeType::Wall)
+						shared_ptr<Node> neighbour = graph.At(location);
+						if (neighbour->Type() != NodeType::Wall)
 						{
-							node->Neighbors().push_back(neighbor);
+							node->Neighbours().push_back(neighbour);
 						}
 					}
 				}

@@ -44,8 +44,8 @@ namespace Library
 		void SetHeuristic(float value);
 
 		float TotalCost() const;
-		std::vector<std::weak_ptr<Node>>& Neighbors();
-		const std::vector<std::weak_ptr<Node>>& Neighbors() const;
+		std::vector<std::weak_ptr<Node>>& Neighbours();
+		const std::vector<std::weak_ptr<Node>>& Neighbours() const;
 		
 		std::weak_ptr<Node> Parent() const;
 		void SetParent(std::shared_ptr<Node> parent);
@@ -59,7 +59,7 @@ namespace Library
 		float mHeuristic;
 		float mPathCost;
 		float mTotalCost;
-		std::vector<std::weak_ptr<Node>> mNeighbors;
+		std::vector<std::weak_ptr<Node>> mNeighbours;
 		std::weak_ptr<Node> mParent;
 	};
 }
