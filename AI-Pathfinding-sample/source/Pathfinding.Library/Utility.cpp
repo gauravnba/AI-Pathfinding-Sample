@@ -22,6 +22,6 @@ namespace Library
 
 	float Utility::ManhattanDistance(const Point& a, const Point& b)
 	{
-		return static_cast<float>(((a.X - b.X) + (a.Y - b.Y)));
+		return static_cast<float>((abs(a.X - b.X) + abs(a.Y - b.Y)));
 	}
 }

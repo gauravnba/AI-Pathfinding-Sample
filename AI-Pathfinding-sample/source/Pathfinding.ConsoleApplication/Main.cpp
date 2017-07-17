@@ -20,27 +20,39 @@ namespace AI
 
 	void Main::Run()
 	{
-		mGraph = GridHelper::LoadGridFromFile(mGridFile);
-		GridHelper::PrintGridFromGraph(mGraph);
+		bool repeat = true;
+		while (repeat)
+		{
+			mGraph = GridHelper::LoadGridFromFile(mGridFile);
+			GridHelper::PrintGridFromGraph(mGraph);
 
-		Point start, end;
-		SetStartAndEndPoints(start, end);
+			Point start, end;
+			SetStartAndEndPoints(start, end);
 
-		BreadthFirst breadthFirstSearch;
-		cout << "\n***** Breadth First Search *****\n" << endl;
-		UpdateGraphWithPath(start, end, breadthFirstSearch);
+			BreadthFirst breadthFirstSearch;
+			cout << "\n******************************** Breadth First Search ********************************\n" << endl;
+			UpdateGraphWithPath(start, end, breadthFirstSearch);
 
-		GreedyBestFirst greedyBestFirst;
-		cout << "\n***** Greedy Best First Search *****\n" << endl;
-		UpdateGraphWithPath(start, end, greedyBestFirst);
+			GreedyBestFirst greedyBestFirst;
+			cout << "\n******************************** Greedy Best First Search ********************************\n" << endl;
+			UpdateGraphWithPath(start, end, greedyBestFirst);
 
-		Dijkstra dijkstra;
-		cout << "\n***** Dijkstra Shortest Path Search *****\n" << endl;
-		UpdateGraphWithPath(start, end, dijkstra);
+			Dijkstra dijkstra;
+			cout << "\n******************************** Dijkstra Shortest Path Search ********************************\n" << endl;
+			UpdateGraphWithPath(start, end, dijkstra);
 
-		AStar aStar;
-		cout << "\n***** A* Shortest Path Search *****\n" << endl;
-		UpdateGraphWithPath(start, end, aStar);
+			AStar aStar;
+			cout << "\n******************************** A* Shortest Path Search ********************************\n" << endl;
+			UpdateGraphWithPath(start, end, aStar);
+
+			cout << "\n******************************** Another round? (y) ********************************" <<endl;
+			string temp;
+			cin >> temp;
+			if (temp != "y")
+			{
+				repeat = false;
+			}
+		}
 	}
 
 	inline void Main::SetStartAndEndPoints(Point& start, Point& end)

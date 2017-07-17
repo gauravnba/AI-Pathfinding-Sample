@@ -13,10 +13,7 @@ namespace AI
 
 		deque<shared_ptr<Node>> AStar::FindPath(shared_ptr<Node> start, shared_ptr<Node> end, set<shared_ptr<Node>>& closedSet)
 		{
-			return FindPath(start, end, closedSet, [](const Point& a, const Point& b)
-			{
-				return static_cast<float>(((a.X - b.X) + (a.Y - b.Y)));
-			});
+			return FindPath(start, end, closedSet, &Utility::ManhattanDistance);
 		}
 
 		deque<shared_ptr<Node>> AStar::FindPath(shared_ptr<Node> start, shared_ptr<Node> end, set<shared_ptr<Node>>& closedSet, function<float(const Point&, const Point&)> heuristicFunction)
@@ -38,7 +35,7 @@ namespace AI
 					}
 
 					// Update the cost of the path so far. Then update the total cost of the node by selective traversal.
-					costSoFar = costSoFar + TraversalCost;
+					costSoFar = currentNode->PathCost() + TraversalCost;
 					if (openSet.find(node) != openSet.end())
 					{
 						if (costSoFar < node->PathCost())
