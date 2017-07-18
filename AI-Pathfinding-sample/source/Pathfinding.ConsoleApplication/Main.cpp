@@ -66,14 +66,14 @@ namespace AI
 			cout << "Enter start point (x,y): ";
 			cin >> input;
 			start = GetPointFromString(input);
-			if (mGraph.At(start)->Type() != NodeType::Wall)
+			if (mGraph.Contains(start) && (mGraph.At(start)->Type() == NodeType::Normal))
 			{
 				mGraph.At(start)->SetType(NodeType::Start);
 				isValid = false;
 			}
 			else
 			{
-				cout << "**Point cannot be on the wall. Please enter a valid point**" << endl;
+				cout << "**Please enter a valid point**" << endl;
 			}
 		}
 
@@ -84,14 +84,14 @@ namespace AI
 			cout << "Enter end point (x,y): ";
 			cin >> input;
 			end = GetPointFromString(input);
-			if (mGraph.At(end)->Type() != NodeType::Wall)
+			if (mGraph.Contains(end) && (mGraph.At(end)->Type() == NodeType::Normal))
 			{
 				mGraph.At(end)->SetType(NodeType::End);
 				isValid = false;
 			}
 			else
 			{
-				cout << "**Point cannot be on the wall. Please enter a valid point**" << endl;
+				cout << "*Please enter a valid point**" << endl;
 			}
 		}
 	}
